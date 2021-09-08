@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <title>Concatenação</title>
+</head>
+<body>
+    <h3>
+        Ordem de seleção da concatenação: 
+    </h3>
+    <p>
+        A > Seleciona, e resulta no campo abaixo dele.
+    </p>
+    <p>
+        B > Só é possível selecionar quando o campo 'C' é escrito.
+    </p>
+    <p>
+        C > Campo de escrita de número.
+    </p>
+        <p>
+        D > Campo de escrita de texto.
+    </p>
+        
+<br>
+        
+        <div class="row">
+            <div class="col-md-3 col-xs-12" style="margin-top:20px;">
+                <label>A</label>
+                <select class="class-a select form-control" data-placeholder="Selecionar" name="a" id="a">
+                    <option value="value_a">Selecione</option>;
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                </select>
+            </div>
+            
+            <div class="col-md-3 col-xs-12" style="margin-top:20px;">
+                <label>Buscando resultado de A</label>
+                <input type="text" name="resultado_a" id="resultado_a" class="resultado_a form-control" readonly>
+            </div>
+
+            <div class="col-md-3 col-xs-12" style="margin-top:20px;">
+                <label>B</label>
+                <select class="class-b select form-control" data-placeholder="Selecionar" name="b" id="b" disabled>
+                    <option value="value_b">Selecione</option>;
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>  
+                </select>
+            </div>
+            
+                <div class="col-md-1 col-xs-12" style="margin-top:20px;"> 
+            <label for="">C</label>
+            <input id="c" name="c" type="number" placeholder="" class="c form-control">
+            </div>
+            
+            <div class="col-md-5 col-xs-12" style="margin-top:20px;">
+            <label for="">D</label>
+            <input type="text" name="d" id="d" class="d form-control">
+            </div>
+            
+                    
+            <div class="col-md-5 col-xs-12" style="margin-top:20px;">
+            <label for="">Resultado da Concatenação ( A + B + C + D ):</label>
+            <input type="text" name="concatenacao" id="concatenacao" class="value_a concatenacao form-control" disabled>
+            </div>
+</body>
+</html>
+
+<script>
+let value_a = ""
+let concatenacao
+    $('.class-a').change(function(){
+        let resultado_a = $(this).find('option:selected').text()
+        value_a = $(this).find('option:selected').text()
+        $(".resultado_a").val(resultado_a)
+        $(".value_a").val(value_a)
+        console.log(value_a)
+    });
+    
+    $('.d').change(function(){
+    $(".d").val()
+    if($(this).val()) {
+            $(".class-b ").prop("disabled", false)
+        }else{
+            $(".class-b ").prop("disabled", true)
+            $(".class-b ").val("")
+        } 
+    });
+
+    // CONCATENAÇÃO DO NOME
+
+    let d
+    $('.class-b').change(function(){
+        concatenacao = $(this).find('option:selected').text()
+
+        let c = " " + concatenacao + " " + $(".c").val() + " " + $(".d").val()
+        
+        $(".concatenacao").val(value_a + c)
+        // console.log(concatenacao)
+    });
+    
+</script>
